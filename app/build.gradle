@@ -2,6 +2,21 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+    //签名设置
+    signingConfigs {
+        release {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('D:\\AndroidStudy\\LinuxTest\\key\\debug.keystore')//加"../"表示该文件位于上一级即项目根路径下
+            storePassword 'android'
+        }
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('D:\\AndroidStudy\\LinuxTest\\key\\debug.keystore')//加"../"表示该文件位于上一级即项目根路径下
+            storePassword 'android'
+        }
+    }
     defaultConfig {
         applicationId "com.study.zz.linuxtest"
         minSdkVersion 24
@@ -9,7 +24,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
     }
+
     buildTypes {
         release {
             minifyEnabled false
